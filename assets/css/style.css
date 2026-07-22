@@ -257,12 +257,20 @@ section{padding:120px 0;position:relative;}
   background:var(--white);border-radius:var(--radius);padding:38px 32px;border:1px solid var(--border);
   position:relative;overflow:hidden;transition:transform .45s var(--ease), box-shadow .45s var(--ease);
 }
+/* .exp-card::before{
+  content:'';position:absolute;inset:0;border-radius:var(--radius);padding:1.5px;
+  background:linear-gradient(135deg,var(--gold),transparent 40%,var(--teal-light));
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .4s;
+} */
 .exp-card::before{
   content:'';position:absolute;inset:0;border-radius:var(--radius);padding:1.5px;
   background:linear-gradient(135deg,var(--gold),transparent 40%,var(--teal-light));
   -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
   -webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .4s;
+  pointer-events:none; /* add this line */
 }
+
 .exp-card:hover{transform:translateY(-8px);box-shadow:0 30px 70px rgba(10,77,104,.14);}
 .exp-card:hover::before{opacity:1;}
 .exp-icon{
@@ -290,8 +298,41 @@ section{padding:120px 0;position:relative;}
   background:var(--white);border:1px solid var(--border);border-radius:var(--radius-sm);
   padding:30px 20px;text-align:center;transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .35s;
 }
-.member-card:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(10,77,104,.1);border-color:var(--gold-light);}
-.member-mark{width:44px;height:44px;margin:0 auto 14px;border-radius:50%;background:var(--bg-alt);display:flex;align-items:center;justify-content:center;color:var(--navy);font-family:var(--font-display);font-weight:700;}
+/* .member-card:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(10,77,104,.1);border-color:var(--gold-light);}
+.member-mark{width:44px;height:44px;margin:0 auto 14px;border-radius:50%;background:var(--bg-alt);display:flex;align-items:center;justify-content:center;color:var(--navy);font-family:var(--font-display);font-weight:700;} 
+.member-mark{
+  width:70px;
+  height:70px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.member-mark img{
+  width:55px;
+  height:55px;
+  object-fit:contain;
+} */
+.member-mark{
+  width:70px;
+  height:70px;
+  margin:0 auto 14px;
+  border-radius:50%;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--bg-alt);
+  border:2px solid rgba(10,77,104,.1);
+}
+
+.member-mark img{
+  width:100%;
+  height:100%;
+  object-fit:cover;   /* Use contain if you don't want any cropping */
+  border-radius:50%;
+  display:block;
+}
 .member-card p{font-size:.85rem;font-weight:600;color:var(--navy-deep);}
 
 /* ---------- Research cards ---------- */
